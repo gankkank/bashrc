@@ -12,11 +12,21 @@ git_branch() {
   fi
 }
 relative_path() {
-pwd|sed -e "s:$HOME:~:"| sed -Ee "s:([^/])[^/]+/:\1/:g"
+  pwd|sed -e "s:$HOME:~:"| sed -Ee "s:([^/])[^/]+/:\1/:g"
 }
 
-PS1="[\W]"
-PS1="\u@\H:[\$(relative_path)]"
-PS1+="\$(git_branch)"
-PS1+="\$"
-export PS1
+#PS1="[\W]"
+#PS1="\u@\H:[\$(relative_path)]"
+#PS1+="\$(git_branch)"
+#PS1+="\$"
+#export PS1
+
+bash_custom_ps() {
+  PS1="[\W]"
+  PS1="\u@\H:[\$(relative_path)]"
+  PS1+="\[\e[0;31m\]\$(git_branch)\[\e[m\]" 
+  PS1+="\$"
+  export PS1
+}
+
+bash_custom_ps
