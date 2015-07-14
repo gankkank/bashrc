@@ -5,6 +5,7 @@ cd ${script_dir}/
 
 if [ "$(uname)" == "Darwin" ]; then
   . ps1.mac.sh
+  . bash_completion
 else
   . ps1.sh
 fi
